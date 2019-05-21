@@ -20,16 +20,19 @@ class App extends Component {
       });
   }
   addPost = posts => {
+    console.log(posts, "addpost");
     axios
-      .post("/api/posts", { posts })
-      .then(res => this.setState({ posts: [...this.state.todos, res.data] }));
+      .post("/api/posts", posts)
+
+      .then(res => this.setState({ posts: [...this.state.posts, res.data] }));
+    // console.log(posts);
   };
 
   render() {
     return (
       <div className="App">
         <h1>Posts</h1>
-        <AddPost addpPost={this.addPost} />
+        <AddPost addPost={this.addPost} />
         <Posts posts={this.state.posts} />
       </div>
     );

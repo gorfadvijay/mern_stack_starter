@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export class PostItem extends Component {
   render() {
-    console.log(this.props.post);
+    //console.log(this.props.post);
     const { title, des } = this.props.post;
     return (
       <div>

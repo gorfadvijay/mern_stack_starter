@@ -23,12 +23,13 @@ router.get("/", (req, res) => {
 // @desc    post a Post
 
 router.post("/", (req, res) => {
+  console.log(req.body);
   const newPost = new Post(req.body);
   newPost
     .save()
     .then(posts => {
       res.json(posts);
-      console.log(posts);
+      // console.log(posts);
     })
 
     .catch(err => {
