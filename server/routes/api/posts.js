@@ -20,7 +20,6 @@ router.get("/", (req, res) => {
 // @desc    Get All Posts
 
 router.get("/:i", (req, res) => {
-  console.log(req.params.i);
   Post.find()
     .skip(req.params.i)
     .limit(10)
@@ -53,7 +52,6 @@ router.post("/", (req, res) => {
 // @desc    Delete A posts
 
 router.delete("/:id", (req, res) => {
-  console.log(req.params.id);
   Post.findById(req.params.id)
     .then(item => item.remove().then(() => res.json({ success: true })))
     .catch(err => res.status(404).json({ success: false }));
