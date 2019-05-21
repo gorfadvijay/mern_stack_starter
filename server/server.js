@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const Post = require("./models/post");
+
+const posts = require("./routes/api/posts");
 
 const app = express();
-app.listen(5000, console.log("listning top port 5000 "));
 
 app.use(bodyParser.json());
 
@@ -23,11 +23,10 @@ mongoose
     console.log(err);
   });
 
-const newPost = new Post({
-  title: "hero",
-  des: "maion tera hero"
-})
-  .save()
-  .then(post => {
-    console.log(post);
-  });
+app.use("/api/posts", posts);
+
+const port = process.env.PORT || 5000;
+
+app.listen(5000, () => {
+  console.log(`listning to port ${port}`);
+});
