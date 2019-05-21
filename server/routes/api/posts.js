@@ -11,9 +11,21 @@ router.get("/", (req, res) => {
   Post.find()
     .sort({ date: -1 })
     .then(posts => res.json(posts))
-    .then(posts => {
-      console.log(posts);
-    })
+
+    .catch(err => {
+      console.log(err);
+    });
+});
+// @route   GET api/Posts
+// @desc    Get All Posts
+
+router.get("/:i", (req, res) => {
+  console.log(req.params.i);
+  Post.find()
+    .skip(req.params.i)
+    .limit(10)
+    .then(posts => res.json(posts))
+
     .catch(err => {
       console.log(err);
     });
